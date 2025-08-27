@@ -1,0 +1,230 @@
+<!DOCTYPE html><html lang="en" class="dark"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Evolution Bot — Terms & Conditions</title>
+    <meta name="description" content="Terms & Conditions for the Evolution Discord Bot.">
+
+    <!-- EARLY GUARDS: install global handlers ASAP to suppress injected wallet errors -->
+    <script>
+      (function installEarlyGuards(){
+        try {
+          function s(v){ try{ return String(v||''); }catch(e){return ''} }
+          function isWalletMsg(msg){ msg = s(msg).toLowerCase(); return msg.includes('metamask') || msg.includes('eth_requestaccounts') || msg.includes('wallet') || msg.includes('failed to connect'); }
+          window.__ds_terms_handlers_installed = true;
+          window.addEventListener('unhandledrejection', function(e){
+            try{
+              var r = e && (e.reason || e.detail || '');
+              var txt = (r && r.message) ? r.message : String(r);
+              if (isWalletMsg(txt)) { if (typeof e.preventDefault === 'function') e.preventDefault(); console.warn('[terms:early] suppressed wallet unhandled rejection:', txt); return; }
+            }catch(err){}
+          }, true);
+          window.onerror = function(message, src, ln, col, err){
+            try{ var t = message || (err && err.message) || ''; if (isWalletMsg(t)) { console.warn('[terms:early] suppressed wallet error:', t); return true; } }catch(e){}
+            return false;
+          };
+        }catch(e){}
+      })();
+    </script>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: { extend: { fontFamily: { sans: ['Inter','system-ui','-apple-system','Segoe UI','Roboto','Ubuntu','Cantarell','Noto Sans','Helvetica Neue','Arial','sans-serif'] }, boxShadow: { soft: '0 10px 30px -12px rgba(0,0,0,0.6)' } } }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+      html{scroll-behavior:smooth}
+      .glass{backdrop-filter:blur(10px)}
+      ::selection{background:#4f46e5;color:#fff}
+    </style>
+  </head>
+
+  <body class="bg-neutral-950 text-neutral-100 font-sans">
+    <noscript>
+      <div class="max-w-5xl mx-auto m-4 p-4 rounded-xl bg-red-900/40 border border-red-800 text-sm">This page works best with JavaScript enabled.</div>
+    </noscript>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-40 border-b border-neutral-800/70 bg-neutral-950/80 glass">
+      <div class="max-w-5xl mx-auto px-4 py-4 flex items-center gap-3">
+        <a href="#top" class="h-9 w-9 shrink-0 rounded-2xl bg-gradient-to-br from-indigo-500 via-purple-500 to-fuchsia-500 shadow-soft" aria-label="Evolution"></a>
+        <div class="flex-1">
+          <h1 class="text-lg md:text-xl font-bold tracking-tight">Evolution Bot</h1>
+          <p class="text-xs text-neutral-400">Terms & Conditions</p>
+        </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="max-w-5xl mx-auto px-4 pt-8">
+      <div class="rounded-3xl border border-neutral-800/70 bg-neutral-900/40 p-6 md:p-8 shadow-soft">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div>
+            <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">Terms & Conditions</h2>
+            <p class="text-neutral-400 mt-1">Comprehensive terms governing use of the Evolution Discord Bot.</p>
+          </div>
+          <div class="text-sm text-neutral-400">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <main id="top" class="max-w-5xl mx-auto px-4 py-8 space-y-8">
+      <article class="doc rounded-3xl border border-neutral-800/70 bg-neutral-900/40 p-6 md:p-8 shadow-soft">
+        <h2 class="text-2xl md:text-3xl font-bold mt-1 mb-4">Evolution Bot — Terms & Conditions</h2>
+        <p class="leading-relaxed my-3">By installing or using <strong>Evolution Bot</strong> ("the Bot"), you agree to these Terms. If you do not agree, remove the Bot from your server immediately.</p>
+
+        <h3 class="text-xl md:text-2xl font-semibold mt-8 mb-3">1. Purpose & Scope</h3>
+        <p class="leading-relaxed my-3">The Bot provides verification, moderation, and security tools to assist Discord server owners in protecting their communities. It is intended for lawful and ethical use only.</p>
+
+        <h3 class="text-xl md:text-2xl font-semibold mt-8 mb-3">2. Eligibility</h3>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>You must be at least <strong>13 years old</strong> (or meet the minimum age required in your jurisdiction) to use the Bot.</li>
+          <li>You must comply with Discord’s <a class="underline" href="https://discord.com/terms" target="_blank" rel="noopener">Terms of Service</a> and <a class="underline" href="https://discord.com/guidelines" target="_blank" rel="noopener">Community Guidelines</a>.</li>
+        </ul>
+
+        <h3 class="text-xl md:text-2xl font-semibold mt-8 mb-3">3. Acceptable Use Policy</h3>
+        <p class="leading-relaxed my-3">The following describes permitted and prohibited use.</p>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <h4 class="font-semibold">Permitted</h4>
+            <ul class="list-disc pl-6 mt-2 space-y-2">
+              <li>Using the Bot to secure and moderate your server.</li>
+              <li>Configuring verification and anti-spam protections.</li>
+              <li>Customizing moderation rules and logs for your community.</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold">Prohibited</h4>
+            <ul class="list-disc pl-6 mt-2 space-y-2">
+              <li>Using the Bot for illegal activities or to facilitate harm.</li>
+              <li>Attempting to exploit, reverse-engineer, copy, or modify the Bot’s code.</li>
+              <li>Deploying the Bot in servers that promote scams, hate, or explicit content.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 class="text-xl md:text-2xl font-semibold mt-8 mb-3">4. Data Collection & Use</h3>
+        <p class="leading-relaxed my-3">To operate, the Bot collects minimal data: <strong>User IDs, Server IDs, Role/Channel IDs, event logs, and verification attempts</strong>. This data is used for security, moderation, and stability. We do not sell or share your data with advertisers. See full details in our <a href="https://evolutionpolic.netlify.app/" class="underline">Privacy Policy</a>.</p>
+
+        <h3 class="text-xl md:text-2xl font-semibold mt-8 mb-3">5. Verification & Security Rules</h3>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Verification may require CAPTCHA, security prompts, or manual review.</li>
+          <li>Failure or refusal to verify may restrict your access to server features or result in removal.</li>
+          <li>Verification data is retained only for as long as necessary for security purposes.</li>
+        </ul>
+
+        <h3 class="text-xl md:text-2xl font-semibold mt-8 mb-3">6. Server Owner Responsibilities</h3>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Server owners must configure the Bot responsibly and ensure compliance with applicable laws.</li>
+          <li>Server owners are responsible for member communication, rules enforcement, and any actions taken based on Bot reports.</li>
+        </ul>
+
+        <h3 class="text-xl md:text-2xl font-semibold mt-8 mb-3">7. Liability & Disclaimers</h3>
+        <p class="leading-relaxed my-3">The Bot is provided "as-is" without warranty of any kind. To the maximum extent permitted by law, the Bot developers are not liable for any indirect, incidental, special, or consequential damages arising from use of the Bot (including bans, data loss, or financial loss).</p>
+
+        <h3 class="text-xl md:text-2xl font-semibold mt-8 mb-3">8. Availability & Maintenance</h3>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>We strive for 24/7 uptime but do not guarantee uninterrupted service.</li>
+          <li>We may perform maintenance, updates, or security actions that temporarily modify or disable features.</li>
+        </ul>
+
+        <h3 class="text-xl md:text-2xl font-semibold mt-8 mb-3">9. Termination & Enforcement</h3>
+        <p class="leading-relaxed my-3">We reserve the right to remove or disable the Bot for any server that violates these Terms, or to suspend access for users who abuse features. Enforcement decisions are at our sole discretion.</p>
+
+        <h3 class="text-xl md:text-2xl font-semibold mt-8 mb-3">10. Modifications to Terms</h3>
+        <p class="leading-relaxed my-3">We may update these Terms from time to time. We will announce major changes in the Bot’s support server. Continued use after updates indicates acceptance of the new Terms.</p>
+
+        <h3 class="text-xl md:text-2xl font-semibold mt-8 mb-3">11. Governing Law</h3>
+        <p class="leading-relaxed my-3">These Terms are governed by the laws of the jurisdiction where the Bot maintainer is located, unless otherwise required by local law.</p>
+
+        <h3 class="text-xl md:text-2xl font-semibold mt-8 mb-3">12. Contact & Support</h3>
+        <ul class="list-disc pl-6 space-y-2">
+          <li><strong>Support Server:</strong> <span class="text-neutral-400">https://discord.gg/6HCB6shM2e</span></li>
+          <li><strong>Email:</strong> <span class="text-neutral-400">ksk42552@gmail.com</span></li>
+        </ul>
+
+        <div class="mt-8 p-4 rounded-2xl bg-neutral-800/60 border border-neutral-700/60">
+          <h4 class="font-semibold mb-1">Quick Summary</h4>
+          <p class="text-neutral-300">Use the Bot to protect your server. Don’t use it for harm. We collect minimal data for security. Violations may result in removal.</p>
+        </div>
+      </article>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="max-w-5xl mx-auto px-4 pb-12">
+      <div class="rounded-3xl border border-neutral-800/70 bg-neutral-900/40 p-6 md:p-8 text-sm text-neutral-400 flex flex-col md:flex-row md:items-center gap-3 md:gap-6 justify-between">
+        <p>© <span id="year"></span> Evolution • All rights reserved.</p>
+        <div class="flex gap-3">
+          <a href="https://evolutionpolic.netlify.app/" class="underline hover:no-underline">Privacy Policy</a>
+          <a href="#top" class="underline hover:no-underline">Back to top</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const $ = (sel, root=document) => root.querySelector(sel);
+
+      $('#year').textContent = new Date().getFullYear();
+      $('#lastUpdated').textContent = '13 August 2025';
+
+      function termsText(){
+        const el = document.querySelector('main article');
+        const clone = el.cloneNode(true);
+        clone.querySelectorAll('button, a, details, summary').forEach(x => x.remove());
+        return clone.innerText.trim();
+      }
+
+      async function copyToClipboard(text){
+        try{ await navigator.clipboard.writeText(text); return true;}catch(e){ try{ const ta=document.createElement('textarea'); ta.value=text; ta.setAttribute('readonly',''); ta.style.position='absolute'; ta.style.left='-9999px'; document.body.appendChild(ta); ta.select(); const ok=document.execCommand('copy'); ta.remove(); return ok;}catch(err){return false;} }
+      }
+
+      $('#copyBtn').addEventListener('click', async ()=>{ const ok = await copyToClipboard(termsText()); toast(ok?'Copied to clipboard':'Copy failed'); });
+      $('#printBtn').addEventListener('click', ()=>{ const style=document.createElement('style'); style.textContent='@media print{ body *{ visibility:hidden } main article{ visibility:visible !important } }'; document.head.appendChild(style); window.print(); setTimeout(()=>style.remove(),500); });
+      $('#downloadBtn').addEventListener('click', ()=>{ const blob=new Blob([termsText()],{type:'text/plain;charset=utf-8'}); const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download='DarkSecurity_Terms.txt'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url); });
+
+      function toast(msg){ const t=document.createElement('div'); t.textContent=msg; t.className='fixed bottom-6 left-1/2 -translate-x-1/2 px-4 py-2 rounded-xl bg-neutral-800 text-neutral-100 border border-neutral-700 shadow-soft'; document.body.appendChild(t); setTimeout(()=>t.remove(),1600); }
+
+      function addResult(listEl, pass, label){ const li=document.createElement('li'); li.textContent=(pass?'✅ ':'❌ ')+label; listEl.appendChild(li); }
+
+      function populateEnv(){ const env=$('#envList'); env.innerHTML=''; addResult(env, true, 'JavaScript enabled'); addResult(env, !!window.isSecureContext, `Secure context: ${!!window.isSecureContext}`); addResult(env, typeof window.ethereum !== 'undefined', `Ethereum present: ${typeof window.ethereum !== 'undefined'}`); addResult(env, !!window.__ds_terms_handlers_installed, `Early guard installed: ${!!window.__ds_terms_handlers_installed}`); addResult(env, `User agent: ${navigator.userAgent}`.length>0, `User agent present`); }
+
+      async function runSelfTests(){ const out=$('#testResults'); out.innerHTML=''; try{ const text=termsText(); addResult(out, typeof text==='string' && text.length>200, 'Extract terms text (>200 chars)'); const copied = await copyToClipboard('Dark Security — test copy'); addResult(out, copied, 'Clipboard copy works (or fallback)'); try{ const blob=new Blob(['test'],{type:'text/plain'}); const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download='test.txt'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url); addResult(out, true, 'Download trigger executed'); }catch(e){ addResult(out, false, 'Download trigger failed'); } try{ const s=document.createElement('style'); s.textContent='@media print{}'; document.head.appendChild(s); const injected=document.head.contains(s); s.remove(); addResult(out, injected, 'Print style injection'); }catch(e){ addResult(out, false, 'Print style injection failed'); }
+
+          // Early guard present
+          addResult(out, !!window.__ds_terms_handlers_installed, 'Early guard installed');
+
+          // Simulate wallet unhandled rejection and verify suppression
+          await new Promise((resolve)=>{
+            try{
+              let suppressed=false;
+              function tmp(ev){ try{ suppressed = !!ev.defaultPrevented; }catch(e){} window.removeEventListener('unhandledrejection', tmp); resolve(suppressed); }
+              window.addEventListener('unhandledrejection', tmp);
+              setTimeout(()=>{ Promise.reject(new Error('Failed to connect to MetaMask — simulated test')); }, 0);
+              setTimeout(()=>{ resolve(false); }, 600);
+            }catch(e){ resolve(false); }
+          }).then((suppressed)=> addResult(out, suppressed===true, 'Wallet unhandled rejection suppressed by guard'));
+
+        }catch(e){ addResult(out, false, 'Unexpected test error: '+(e&&e.message?e.message:e)); }
+      }
+
+      $('#runTests').addEventListener('click', ()=>{ populateEnv(); runSelfTests(); });
+
+      // Fallback guards in case host overwrote early handlers
+      (function installFallback(){ try{ function isWallet(m){ try{ m=String(m||'').toLowerCase(); return m.includes('metamask')||m.includes('wallet')||m.includes('eth_requestaccounts')||m.includes('failed to connect'); }catch(e){return false} window.addEventListener('unhandledrejection',(e)=>{ try{ var r=e&&(e.reason||e.detail||''); var t=(r&&r.message)?r.message:String(r); if(isWallet(t)){ if(typeof e.preventDefault==='function') e.preventDefault(); console.warn('[terms:fallback] suppressed wallet unhandled rejection:', t); } }catch(err){} }); window.addEventListener('error',(e)=>{ try{ var m=(e&& (e.message|| e.error && e.error.message))||''; if(isWallet(m)){ console.warn('[terms:fallback] suppressed wallet error:', m); e.preventDefault && e.preventDefault(); } }catch(err){} }); }catch(e){} })();
+
+      // initial env
+      populateEnv();
+    </script>
+  
+
+</body></html>
